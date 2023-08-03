@@ -29,33 +29,39 @@ function printHistory(){
 // picking color function
 async function picker(){
     try{
+        // creating eyedrop
         const eyedrop = new EyeDropper();
         const {sRGBHex} = await eyedrop.open();
         colors.push(sRGBHex);
+        // copying color to clipboard
+        navigator.clipboard.writeText(sRGBHex);
         localStorage.setItem("colorsHistory", JSON.stringify(colors));
         printColors(sRGBHex);
     }
     catch(error)
     {
-        console.log("fail ", error);
+        console.log("fail: ", error);
     }
 }
 
 
 // adding color to list function
 function printColors(color){
+
     const board = document.querySelector("#history main");
     document.createElement("div");
-    console.log(color)
+    // creating elements
     const elem = document.createElement("div");
     const square = document.createElement("div");
     const desc = document.createElement("span");
+    // setting attributes and values
     desc.setAttribute("class", "text");
     desc.innerHTML= color;
     square.setAttribute("class", "square");
     square.style.backgroundColor = color;
+    elem.setAttribute("class", "color")
+    // adding elements to DOM structure
     elem.appendChild(square);
     elem.appendChild(desc);
-    elem.setAttribute("class", "color")
     board.appendChild(elem);
 }
