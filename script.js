@@ -1,3 +1,4 @@
+// adding event listiners
 window.addEventListener("load", printHistory)
 document.getElementById("btn").addEventListener("click", picker);
 document.getElementById("clr").addEventListener("click", () => {
@@ -9,10 +10,13 @@ document.getElementById("clr").addEventListener("click", () => {
     main = document.createElement("main");
     his.appendChild(main);
 });
+
 let colors;
+// checking if in localStorage already exists colors array 
 JSON.parse(localStorage.getItem("colorsHistory")) ? colors = JSON.parse(localStorage.getItem("colorsHistory")) : colors = [];
 
 
+// printing colors from history
 function printHistory(){
     if(colors){
         for(let color of colors){
@@ -22,6 +26,7 @@ function printHistory(){
     }
 }
 
+// picking color function
 async function picker(){
     try{
         const eyedrop = new EyeDropper();
@@ -36,6 +41,8 @@ async function picker(){
     }
 }
 
+
+// adding color to list function
 function printColors(color){
     const board = document.querySelector("#history main");
     document.createElement("div");
