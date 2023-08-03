@@ -1,0 +1,10 @@
+{
+    "manifest_version": 3,
+    "name": "color picker",
+    "version": "1.0",
+    "description": "checking what color is that",
+    "action":{
+        "default_popup": "index.html"
+    }
+
+}
